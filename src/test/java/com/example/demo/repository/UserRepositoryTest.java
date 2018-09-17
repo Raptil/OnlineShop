@@ -3,6 +3,7 @@ package com.example.demo.repository;
 
 import com.example.demo.domain.Role;
 import com.example.demo.domain.User;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +24,16 @@ public class UserRepositoryTest {
     RoleRepository roleRepository;
 
 
+
     @Test
     public void saveUserWithRole(){
         User user=new User();
-        user.setName("userName");
-        user.setPassword("userPassword");
-        user.setEmail("userEmail");
-        List<Role> roles=new ArrayList<>();
-        Role role =new Role("USER");
-        roleRepository.save(role);
-        roles.add(role);
+        Integer numb=(int)(10+Math.random()*10);
+        user.setName("userName"+numb);
+        user.setPassword("userPassword"+numb);
+        user.setEmail("userEmail"+numb);
+        List<Role> roles=new ArrayList<Role>();
+        roles.add(roleRepository.findByRoleName("USER"));
         user.setRoles(roles);
         userRepository.save(user);
     }

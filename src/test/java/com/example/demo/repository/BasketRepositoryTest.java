@@ -1,0 +1,43 @@
+package com.example.demo.repository;
+
+
+import com.example.demo.domain.Basket;
+import com.example.demo.domain.Product;
+import com.example.demo.domain.Role;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class BasketRepositoryTest {
+
+    @Autowired
+    BasketRepository basketRepository;
+
+    @Autowired
+    ProductRepository productRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Test
+    public void addBasketWithProductsAndUser(){
+        Basket basket = new Basket();
+        basket.setUser(userRepository.findUserByEmail("userEmail"));
+        List<Product> products = new ArrayList<Product>();
+        products.add(productRepository.findByNameAndCost("phone",10000));
+        products.add(productRepository.findByNameAndCost("pen",10));
+        basket.setProducts(products);
+        basket.setTotalCost(products.get(0).getCost()+products.get(1).getCost());
+        basketRepository.save(basket);
+
+
+    }
+
+}

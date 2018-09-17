@@ -48,9 +48,6 @@ public class User {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public String getName() {
         return name;
@@ -90,5 +87,18 @@ public class User {
 
     public void setBaskets(List<Basket> baskets) {
         this.baskets = baskets;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + roles +
+                ", baskets=" + baskets +
+                '}';
     }
 }
