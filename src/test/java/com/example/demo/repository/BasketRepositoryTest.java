@@ -1,9 +1,8 @@
 package com.example.demo.repository;
 
 
-import com.example.demo.domain.Basket;
-import com.example.demo.domain.Product;
-import com.example.demo.domain.Role;
+import com.example.demo.domain.entity.Basket;
+import com.example.demo.domain.entity.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,8 @@ public class BasketRepositoryTest {
         Basket basket = new Basket();
         basket.setUser(userRepository.findUserByEmail("userEmail"));
         List<Product> products = new ArrayList<Product>();
-        products.add(productRepository.findByNameAndCost("phone",10000));
-        products.add(productRepository.findByNameAndCost("pen",10));
+        products.add(productRepository.findProductByNameAndCost("phone",10000));
+        products.add(productRepository.findProductByNameAndCost("pen",10));
         basket.setProducts(products);
         basket.setTotalCost(products.get(0).getCost()+products.get(1).getCost());
         basketRepository.save(basket);

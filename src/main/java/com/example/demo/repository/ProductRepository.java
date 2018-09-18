@@ -1,10 +1,10 @@
 package com.example.demo.repository;
 
 
-import com.example.demo.domain.Product;
+import com.example.demo.domain.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product,Integer> {
 
-    public Product findByNameAndCost(String name, int cost);
+    public Product findProductByNameAndCost(String name, int cost);
 }

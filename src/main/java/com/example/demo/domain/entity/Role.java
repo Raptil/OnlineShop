@@ -1,12 +1,15 @@
-package com.example.demo.domain;
+package com.example.demo.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Setter
+@Getter
+@ToString
 @Table(name = "role")
 @Entity
 public class Role {
@@ -25,32 +28,11 @@ public class Role {
 
 
     @Column(name = "role_name")
-    @Setter
-    @Getter
     private String roleName;
 
     //@ManyToMany(mappedBy = "role")
     //public List<User> users;
 
 
-    public int getRoleId() {
-        return roleId;
-    }
 
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "roleId=" + roleId +
-                ", roleName='" + roleName + '\'' +
-                '}';
-    }
 }

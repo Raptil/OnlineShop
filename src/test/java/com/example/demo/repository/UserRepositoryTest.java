@@ -1,9 +1,8 @@
 package com.example.demo.repository;
 
 
-import com.example.demo.domain.Role;
-import com.example.demo.domain.User;
-import org.junit.Ignore;
+import com.example.demo.domain.entity.Role;
+import com.example.demo.domain.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class UserRepositoryTest {
         user.setPassword("userPassword"+numb);
         user.setEmail("userEmail"+numb);
         List<Role> roles=new ArrayList<Role>();
-        roles.add(roleRepository.findByRoleName("USER"));
+        roles.add(roleRepository.findRoleByRoleName("USER"));
         user.setRoles(roles);
         userRepository.save(user);
     }
