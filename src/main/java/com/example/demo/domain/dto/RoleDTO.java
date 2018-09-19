@@ -1,15 +1,9 @@
 package com.example.demo.domain.dto;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
 public class RoleDTO {
 
     private int roleId;

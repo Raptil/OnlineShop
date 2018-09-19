@@ -1,15 +1,12 @@
 package com.example.demo.domain.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+
 
 import javax.persistence.*;
-import java.util.List;
 
-@Setter
-@Getter
-@ToString
+
+@Data
 @Table(name = "role")
 @Entity
 public class Role {

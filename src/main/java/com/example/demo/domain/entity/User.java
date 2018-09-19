@@ -1,19 +1,13 @@
 package com.example.demo.domain.entity;
 
-import com.example.demo.domain.entity.Basket;
-import com.example.demo.domain.entity.Role;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
 
-@Setter
-@Getter
-@ToString
+@Data
 @Table(name = "user_account")
 @Entity
 public class User {
