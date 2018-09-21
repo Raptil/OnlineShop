@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -26,16 +27,16 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_account_to_role",
             joinColumns=@JoinColumn(name = "user_id"),
             inverseJoinColumns=@JoinColumn(name = "role_id")
     )
-    private List<Role> roles;
+    private Set<Role> roles;
 
-    @OneToMany
-    private List<Basket>baskets;
+  //  @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+   // private List<Basket>baskets;
 
 
 }

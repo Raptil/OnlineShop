@@ -24,19 +24,22 @@ public class BasketServiceTest {
     ProductService productService;
 
 
+
+
     @Test
     public void createBasket(){
 
 
         UserDTO user=userService.getUser(4);
-     
+
         basketService.addBasket(user);
 
     }
 
+
     @Test
     public void addProduct(){
 
-        basketService.addProductToBasket(productService.getProduct("pen"),2);
+        basketService.addProductToBasket(productService.getProduct("pen"),1);
     }
 }

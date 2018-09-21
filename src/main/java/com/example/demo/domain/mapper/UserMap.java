@@ -3,9 +3,11 @@ package com.example.demo.domain.mapper;
 
 import com.example.demo.domain.dto.UserDTO;
 import com.example.demo.domain.entity.User;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class UserMap {
 
@@ -19,7 +21,7 @@ public class UserMap {
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
         user.setRoles(RoleMap.toEntity(userDTO.getRoles()));
-        user.setBaskets(BasketMap.toEntity(userDTO.getBaskets()));
+      //  user.setBaskets(BasketMap.toEntity(userDTO.getBaskets()));
 
         return user;
     }
@@ -34,7 +36,7 @@ public class UserMap {
         userDTO.setPassword(user.getPassword());
         userDTO.setEmail(user.getEmail());
         userDTO.setRoles(RoleMap.toDTO(user.getRoles()));
-        userDTO.setBaskets(BasketMap.toDTO(user.getBaskets()));
+     //   userDTO.setBaskets(BasketMap.toDTO(user.getBaskets()));
 
         return userDTO;
     }

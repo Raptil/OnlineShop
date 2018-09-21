@@ -3,9 +3,13 @@ package com.example.demo.domain.mapper;
 
 import com.example.demo.domain.dto.RoleDTO;
 import com.example.demo.domain.entity.Role;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 
 public class RoleMap {
 
@@ -30,21 +34,21 @@ public class RoleMap {
         return roleDTO;
     }
 
-    public static List<Role> toEntity(List<RoleDTO> roleDTOS){
+    public static Set<Role> toEntity(Set<RoleDTO> roleDTOS){
         if (roleDTOS==null) return null;
-        List<Role> roles =new ArrayList<>();
+        Set<Role> roles =new HashSet<>();
         for(RoleDTO roleDTO:roleDTOS)
             if(roleDTO!=null) roles.add(RoleMap.toEntity(roleDTO));
        return roles;
     }
 
-    public static List<RoleDTO> toDTO(List<Role> roles){
+    public static Set<RoleDTO> toDTO(Set<Role> roles){
         if(roles==null) return null;
 
-        List<RoleDTO> roleDTOS=new ArrayList<>();
+        Set<RoleDTO> roleDTOS=new HashSet<>();
 
         for (Role role:roles)
-            if(role!=null) roleDTOS.add(RoleMap.toDTO(role));
+            if(role==null) roleDTOS.add(RoleMap.toDTO(role));
 
         return roleDTOS;
     }

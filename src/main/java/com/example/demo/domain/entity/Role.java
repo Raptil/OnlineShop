@@ -4,6 +4,7 @@ import lombok.Data;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Data
@@ -27,8 +28,8 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    //@ManyToMany(mappedBy = "role")
-    //public List<User> users;
+   // @ManyToMany(mappedBy = "roles")
+   // public List<User> users;
 
 
 

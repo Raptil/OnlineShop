@@ -28,9 +28,14 @@ public class Basket {
    )
     private List<Product> products;
 
-   @ManyToOne
+    @ManyToOne(targetEntity = User.class)
    @JoinColumn(name = "user_id")
+
     private User user;
+
+
+
+
 
 
 }

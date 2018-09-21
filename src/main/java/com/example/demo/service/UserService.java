@@ -12,6 +12,6 @@ public interface UserService {
 
     public UserDTO registryUser(UserDTO user);
 
-    public void addBasket(UserDTO user,BasketDTO basket);
+    //public void addBasket(UserDTO user,BasketDTO basket);
 
 }

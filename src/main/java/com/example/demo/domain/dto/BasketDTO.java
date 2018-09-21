@@ -14,4 +14,6 @@ public class BasketDTO {
     private int totalCost;
     private List<ProductDTO> products;
     private UserDTO user;
+
+
 }

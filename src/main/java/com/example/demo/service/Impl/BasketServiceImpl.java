@@ -7,17 +7,21 @@ import com.example.demo.domain.mapper.BasketMap;
 import com.example.demo.domain.mapper.UserMap;
 import com.example.demo.repository.BasketRepository;
 import com.example.demo.service.BasketService;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 @Service
 public class BasketServiceImpl implements BasketService {
 
     @Autowired
     BasketRepository basketRepository;
 
+    @Transactional
     public BasketDTO getBasket(Integer id){
         return BasketMap.toDTO(basketRepository.findBasketByBasketId(id));
     }
