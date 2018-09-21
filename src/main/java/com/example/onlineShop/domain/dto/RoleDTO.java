@@ -1,0 +1,11 @@
+package com.example.onlineShop.domain.dto;
+
+
+import lombok.Data;
+
+@Data
+public class RoleDTO {
+
+    private int roleId;
+    private String roleName;
+}
