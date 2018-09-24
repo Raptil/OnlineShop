@@ -19,8 +19,8 @@ public class UserServiceTest {
     @Test
     public void registryUserTest(){
         UserDTO user=new UserDTO();
-        user.setEmail("EmailOfNewUser12");
-        user.setPassword("His password");
+        user.setEmail("EmailForMe");
+        user.setPassword("password");
         user.setName("NewName");
         userService.registryUser(user);
 

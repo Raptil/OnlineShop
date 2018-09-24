@@ -14,7 +14,7 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     public ProductDTO getProduct(String name,Integer cost){
         return ProductMap.toDTO(productRepository.findProductByNameAndCost(name,cost));

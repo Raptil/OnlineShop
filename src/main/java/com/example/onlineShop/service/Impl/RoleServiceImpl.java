@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class RoleServiceImpl implements RoleService {
 
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
 
     public RoleDTO getRole(String roleName){

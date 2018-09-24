@@ -16,7 +16,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @GetMapping(value = "/{id}")
     public ProductDTO getProduct(@PathVariable("id") Integer id){

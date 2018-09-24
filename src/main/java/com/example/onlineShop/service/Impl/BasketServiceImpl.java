@@ -18,7 +18,7 @@ import java.util.List;
 public class BasketServiceImpl implements BasketService {
 
     @Autowired
-    BasketRepository basketRepository;
+    private BasketRepository basketRepository;
 
     @Transactional
     public BasketDTO getBasket(Integer id){

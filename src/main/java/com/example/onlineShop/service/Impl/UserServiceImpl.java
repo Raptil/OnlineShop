@@ -7,6 +7,7 @@ import com.example.onlineShop.repository.UserRepository;
 import com.example.onlineShop.service.RoleService;
 import com.example.onlineShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -16,9 +17,11 @@ import java.util.*;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    RoleService roleService;
+    private RoleService roleService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
 
@@ -38,8 +41,10 @@ public class UserServiceImpl implements UserService {
         if(user.getRoles()!=null)
           roles=user.getRoles();
         else roles=new HashSet<>();
+        user.setPassword(passwordEncoder.encode(user.getPassword()));;
         roles.add(roleService.getRole("USER"));
         user.setRoles(roles);
+
         userRepository.save(UserMap.toEntity(user));
         return user;
     }

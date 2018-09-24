@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @GetMapping(value = "/{id}")
     public UserDTO getUser(@PathVariable("id")Integer id){

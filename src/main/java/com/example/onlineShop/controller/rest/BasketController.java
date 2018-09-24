@@ -16,7 +16,7 @@ import java.util.List;
 public class BasketController {
 
     @Autowired
-    BasketService basketService;
+    private  BasketService basketService;
 
     @GetMapping(value = "/{id}")
     public BasketDTO getBasket(@PathVariable("id")Integer id){
