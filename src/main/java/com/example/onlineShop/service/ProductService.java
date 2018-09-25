@@ -2,6 +2,7 @@ package com.example.onlineShop.service;
 
 
 import com.example.onlineShop.domain.dto.ProductDTO;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 

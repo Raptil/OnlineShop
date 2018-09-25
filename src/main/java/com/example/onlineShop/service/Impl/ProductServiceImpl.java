@@ -6,6 +6,7 @@ import com.example.onlineShop.repository.ProductRepository;
 import com.example.onlineShop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
         if (product==null) return null;
         return ProductMap.toDTO(productRepository.save(ProductMap.toEntity(product)));
     }
-
+    @ModelAttribute("products")
     public List<ProductDTO> getAll(){
         return ProductMap.toDTO(productRepository.findAll());
     }

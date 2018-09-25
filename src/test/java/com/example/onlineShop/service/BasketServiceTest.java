@@ -2,6 +2,7 @@ package com.example.onlineShop.service;
 
 
 import com.example.onlineShop.domain.dto.UserDTO;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,20 +25,20 @@ public class BasketServiceTest {
 
 
 
+    @Ignore
     @Test
     public void createBasket(){
 
 
-        UserDTO user=userService.getUser(4);
+        UserDTO user=userService.getUser(5);
 
         basketService.addBasket(user);
 
     }
 
-
     @Test
     public void addProduct(){
 
-        basketService.addProductToBasket(productService.getProduct("pen"),1);
+        basketService.addProductToBasket(productService.getProduct("pen"),4);
     }
 }
