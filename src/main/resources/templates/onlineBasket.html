@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Basket</title>
+</head>
+<body>
+<form th:action="@{/onlineBasket/buy}" th:method="POST">
+<table  >
+    <tr>
+        <th>NameOfProduct</th>
+        <th>Cost</th>
+    </tr>
+    <tr th:each="product : ${productsFromBasket}">
+        <td th:text="${product.name}">1 </td>
+        <td th:text="${product.cost}">1 </td>
+    </tr>
+</table>
+    <input type="submit" value="Buy">
+</form>
+
+</body>
+</html>

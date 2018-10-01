@@ -23,4 +23,10 @@ public class RoleServiceImpl implements RoleService {
     public RoleDTO getRole(Integer id){
         return RoleMap.toDTO(roleRepository.findRoleByRoleId(id));
     }
+
+    public RoleDTO addRole(String roleName){
+        RoleDTO roleDTO = new RoleDTO();
+        roleDTO.setRoleName(roleName);
+        return RoleMap.toDTO(roleRepository.save(RoleMap.toEntity(roleDTO)));
+    }
 }

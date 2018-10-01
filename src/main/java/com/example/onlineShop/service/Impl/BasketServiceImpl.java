@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -30,9 +31,8 @@ public class BasketServiceImpl implements BasketService {
         return BasketMap.toDTO(basketRepository.findBasketByUser(UserMap.toEntity(user)));
     }
 
-    public BasketDTO addBasket(UserDTO user){
+    public BasketDTO addBasket(BasketDTO basketDTO,UserDTO user){
         if(user==null) return null;
-        BasketDTO basketDTO=new BasketDTO();
         basketDTO.setUser(user);
         return BasketMap.toDTO(basketRepository.save(BasketMap.toEntity(basketDTO)));
     }
@@ -44,6 +44,16 @@ public class BasketServiceImpl implements BasketService {
         basketDTO.setTotalCost(basketDTO.getTotalCost()+product.getCost());
         basketDTO.setProducts(products);
         basketRepository.save(BasketMap.toEntity(basketDTO));
+    }
+
+    public BasketDTO addProductToBasket(ProductDTO productDTO,BasketDTO basketDTO){
+        List<ProductDTO> products;
+        if(basketDTO.getProducts()==null)products=new ArrayList<>();
+        else products=basketDTO.getProducts();
+        products.add(productDTO);
+        basketDTO.setTotalCost(basketDTO.getTotalCost()+productDTO.getCost());
+        basketDTO.setProducts(products);
+        return basketDTO;
     }
 
     public List<ProductDTO> getProductsFromBasket(Integer basketId){

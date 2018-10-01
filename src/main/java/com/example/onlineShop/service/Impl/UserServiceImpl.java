@@ -49,6 +49,16 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    public Set<RoleDTO> addRole(UserDTO userDTO,String roleName){
+        Set<RoleDTO> roleDTOS =userDTO.getRoles();
+        if(roleService.getRole(roleName)==null)roleService.addRole(roleName);
+        roleDTOS.add(roleService.getRole(roleName));
+        userDTO.setRoles(roleDTOS);
+        userRepository.save(UserMap.toEntity(userDTO));
+
+        return roleDTOS;
+    }
+
 
   /*  public void addBasket(UserDTO user,BasketDTO basket){
         if(basket!=null && user!=null){

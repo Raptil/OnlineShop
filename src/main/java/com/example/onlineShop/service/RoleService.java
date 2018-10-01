@@ -9,4 +9,7 @@ public interface RoleService {
     public RoleDTO getRole(String roleName);
 
     public RoleDTO getRole(Integer id);
+
+    public RoleDTO addRole(String roleName);
+
 }

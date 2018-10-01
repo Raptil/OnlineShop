@@ -14,9 +14,11 @@ public interface BasketService {
 
     public BasketDTO getBasket(UserDTO user);
 
-    public BasketDTO addBasket(UserDTO user);
+    public BasketDTO addBasket(BasketDTO basketDTO,UserDTO user);
 
     public void addProductToBasket(ProductDTO productDTO,Integer basketId);
+
+    public BasketDTO addProductToBasket(ProductDTO productDTO,BasketDTO basketDTO);
 
     public List<ProductDTO> getProductsFromBasket(Integer basketId);
 }

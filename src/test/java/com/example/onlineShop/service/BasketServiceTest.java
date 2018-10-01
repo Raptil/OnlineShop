@@ -1,6 +1,7 @@
 package com.example.onlineShop.service;
 
 
+import com.example.onlineShop.domain.dto.BasketDTO;
 import com.example.onlineShop.domain.dto.UserDTO;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -32,7 +33,8 @@ public class BasketServiceTest {
 
         UserDTO user=userService.getUser(5);
 
-        basketService.addBasket(user);
+        BasketDTO basketDTO=new BasketDTO();
+        basketService.addBasket(basketDTO,user);
 
     }
 
