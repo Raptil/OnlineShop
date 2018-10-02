@@ -13,7 +13,7 @@ public class UserDTO {
     private String password;
     private String email;
     private Set<RoleDTO> roles;
-  //  private List<BasketDTO> baskets;
+
 
 
 }

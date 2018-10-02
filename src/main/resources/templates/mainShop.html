@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<table  >
+<table >
     <tr>
         <th>NameOfProduct</th>
         <th>Cost</th>
@@ -19,10 +19,14 @@
         <td th:text="${product.name}">1 </td>
         <td th:text="${product.cost}">1 </td>
        <td ><input type="submit" value="Add"></td>
+            <td  th:if="${role!='ROLE_ADMIN'}" ><a th:href="@{/product/{id}/edit(id=${product.productId})}">Edit</a></td>
     </form>
     </tr>
 
 </table>
 <a th:href="@{/onlineBasket}">Basket</a>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

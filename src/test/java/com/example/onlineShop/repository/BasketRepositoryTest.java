@@ -26,14 +26,14 @@ public class BasketRepositoryTest {
     UserRepository userRepository;
 
     @Test
-    public void addBasketWithProductsAndUser(){
+    public void addBasketWithProductsAndUser() {
         Basket basket = new Basket();
         basket.setUser(userRepository.findUserByEmail("userEmail"));
         List<Product> products = new ArrayList<Product>();
-        products.add(productRepository.findProductByNameAndCost("phone",10000));
-        products.add(productRepository.findProductByNameAndCost("pen",10));
+        products.add(productRepository.findProductByNameAndCost("phone", 10000));
+        products.add(productRepository.findProductByNameAndCost("pen", 10));
         basket.setProducts(products);
-        basket.setTotalCost(products.get(0).getCost()+products.get(1).getCost());
+        basket.setTotalCost(products.get(0).getCost() + products.get(1).getCost());
         basketRepository.save(basket);
 
 

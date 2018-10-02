@@ -16,14 +16,11 @@ public class MainViewController {
     ProductService productService;
 
 
-
-
-
-    @GetMapping(value = {"/","/home"})
-    public ModelAndView getProducts(){
-        ModelAndView modelAndView= new ModelAndView("/home");
-        List<ProductDTO> productDTOS =productService.getAll();
-        modelAndView.addObject("products",productDTOS);
+    @GetMapping(value = {"/", "/home"})
+    public ModelAndView getProducts() {
+        ModelAndView modelAndView = new ModelAndView("/home");
+        List<ProductDTO> productDTOS = productService.getAll();
+        modelAndView.addObject("products", productDTOS);
         return modelAndView;
     }
 }

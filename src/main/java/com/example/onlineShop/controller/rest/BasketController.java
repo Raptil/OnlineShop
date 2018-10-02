@@ -16,15 +16,15 @@ import java.util.List;
 public class BasketController {
 
     @Autowired
-    private  BasketService basketService;
+    private BasketService basketService;
 
     @GetMapping(value = "/{id}")
-    public BasketDTO getBasket(@PathVariable("id")Integer id){
+    public BasketDTO getBasket(@PathVariable("id") Integer id) {
         return basketService.getBasket(id);
     }
 
     @GetMapping(value = "/{id}/product")
-    public List<ProductDTO> getProductsFromBasket(@PathVariable("id")Integer id){
+    public List<ProductDTO> getProductsFromBasket(@PathVariable("id") Integer id) {
         return basketService.getProductsFromBasket(id);
     }
 }

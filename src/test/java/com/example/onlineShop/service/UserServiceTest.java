@@ -20,16 +20,17 @@ public class UserServiceTest {
 
     @Ignore
     @Test
-    public void registryUserTest(){
-        UserDTO user=new UserDTO();
+    public void registryUserTest() {
+        UserDTO user = new UserDTO();
         user.setEmail("EmailForMe");
         user.setPassword("password");
         user.setName("NewName");
         userService.registryUser(user);
 
     }
+
     @Test
-    public void addRole(){
-        userService.addRole(userService.getUser(8),"ROLE_ADMIN");
+    public void addRole() {
+        userService.addRole(userService.getUser(8), "ROLE_ADMIN");
     }
 }

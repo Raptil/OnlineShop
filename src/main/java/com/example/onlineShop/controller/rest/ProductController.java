@@ -19,12 +19,12 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping(value = "/{id}")
-    public ProductDTO getProduct(@PathVariable("id") Integer id){
+    public ProductDTO getProduct(@PathVariable("id") Integer id) {
         return productService.getProduct(id);
     }
 
     @GetMapping(value = "/")
-    public List<ProductDTO> getAllProducts(){
+    public List<ProductDTO> getAllProducts() {
         return productService.getAll();
     }
 }

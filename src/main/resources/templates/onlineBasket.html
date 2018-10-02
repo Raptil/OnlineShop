@@ -5,7 +5,7 @@
     <title>Basket</title>
 </head>
 <body>
-<form th:action="@{/onlineBasket/buy}" th:method="POST">
+<form th:unless="${#lists.isEmpty(productsFromBasket)}" th:action="@{/onlineBasket/buy}" th:method="POST">
 <table  >
     <tr>
         <th>NameOfProduct</th>
@@ -18,6 +18,7 @@
 </table>
     <input type="submit" value="Buy">
 </form>
+<h3 th:if="${#lists.isEmpty(productsFromBasket)}"> Basket is empty</h3>
 
 </body>
 </html>

@@ -9,9 +9,9 @@ import java.util.List;
 
 public class ProductMap {
 
-    public static Product toEntity(ProductDTO productDTO){
+    public static Product toEntity(ProductDTO productDTO) {
 
-        if(productDTO==null) return null;
+        if (productDTO == null) return null;
 
         Product product = new Product();
         product.setProductId(productDTO.getProductId());
@@ -22,11 +22,11 @@ public class ProductMap {
         return product;
     }
 
-    public static ProductDTO toDTO(Product product){
+    public static ProductDTO toDTO(Product product) {
 
-        if(product==null) return null;
+        if (product == null) return null;
 
-        ProductDTO productDTO=new ProductDTO();
+        ProductDTO productDTO = new ProductDTO();
 
         productDTO.setProductId(product.getProductId());
         productDTO.setName(product.getName());
@@ -36,24 +36,24 @@ public class ProductMap {
         return productDTO;
     }
 
-    public static List<Product> toEntity(List<ProductDTO> productDTOS){
+    public static List<Product> toEntity(List<ProductDTO> productDTOS) {
 
-        if(productDTOS==null) return null;
+        if (productDTOS == null) return null;
 
-        List<Product> products=new ArrayList<>();
-        for(ProductDTO productDTO:productDTOS)
-            if(productDTO!=null) products.add(ProductMap.toEntity(productDTO));
+        List<Product> products = new ArrayList<>();
+        for (ProductDTO productDTO : productDTOS)
+            if (productDTO != null) products.add(ProductMap.toEntity(productDTO));
 
         return products;
     }
 
-    public static List<ProductDTO> toDTO(List<Product>products){
+    public static List<ProductDTO> toDTO(List<Product> products) {
 
-        if(products==null) return null;
+        if (products == null) return null;
 
-        List<ProductDTO> productDTOS=new ArrayList<>();
-        for(Product product:products)
-            if(product!=null) productDTOS.add(ProductMap.toDTO(product));
+        List<ProductDTO> productDTOS = new ArrayList<>();
+        for (Product product : products)
+            if (product != null) productDTOS.add(ProductMap.toDTO(product));
 
         return productDTOS;
     }

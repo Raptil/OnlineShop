@@ -23,15 +23,14 @@ public class UserRepositoryTest {
     RoleRepository roleRepository;
 
 
-
     @Test
-    public void saveUserWithRole(){
-        User user=new User();
-        Integer numb=(int)(10+Math.random()*10);
-        user.setName("userName"+numb);
-        user.setPassword("userPassword"+numb);
-        user.setEmail("userEmail"+numb);
-        Set<Role> roles=new HashSet<>();
+    public void saveUserWithRole() {
+        User user = new User();
+        Integer numb = (int) (10 + Math.random() * 10);
+        user.setName("userName" + numb);
+        user.setPassword("userPassword" + numb);
+        user.setEmail("userEmail" + numb);
+        Set<Role> roles = new HashSet<>();
         roles.add(roleRepository.findRoleByRoleName("USER"));
         user.setRoles(roles);
         userRepository.save(user);

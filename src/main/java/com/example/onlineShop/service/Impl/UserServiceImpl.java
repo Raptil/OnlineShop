@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Service
@@ -24,34 +25,34 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
 
-
-    public UserDTO getUser(Integer id){
+    public UserDTO getUser(Integer id) {
         return UserMap.toDTO(userRepository.findUserByUserId(id));
     }
 
 
-    public UserDTO getUser(String email){
+    public UserDTO getUser(String email) {
         return UserMap.toDTO(userRepository.findUserByEmail(email));
     }
 
 
-    public UserDTO registryUser(UserDTO user){
-        if(user==null) return null;
+    public UserDTO registryUser(UserDTO user) {
+        if (user == null) return null;
         Set<RoleDTO> roles;
-        if(user.getRoles()!=null)
-          roles=user.getRoles();
-        else roles=new HashSet<>();
-        user.setPassword(passwordEncoder.encode(user.getPassword()));;
-        roles.add(roleService.getRole("USER"));
+        if (user.getRoles() != null)
+            roles = user.getRoles();
+        else roles = new HashSet<>();
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        ;
+        roles.add(roleService.getRole("ROLE_USER"));
         user.setRoles(roles);
 
         userRepository.save(UserMap.toEntity(user));
         return user;
     }
 
-    public Set<RoleDTO> addRole(UserDTO userDTO,String roleName){
-        Set<RoleDTO> roleDTOS =userDTO.getRoles();
-        if(roleService.getRole(roleName)==null)roleService.addRole(roleName);
+    public Set<RoleDTO> addRole(UserDTO userDTO, String roleName) {
+        Set<RoleDTO> roleDTOS = userDTO.getRoles();
+        if (roleService.getRole(roleName) == null) roleService.addRole(roleName);
         roleDTOS.add(roleService.getRole(roleName));
         userDTO.setRoles(roleDTOS);
         userRepository.save(UserMap.toEntity(userDTO));
@@ -59,13 +60,13 @@ public class UserServiceImpl implements UserService {
         return roleDTOS;
     }
 
+    public boolean isAdmin(UserDTO userDTO) {
+        boolean admin = false;
+        Set<RoleDTO> roles = userDTO.getRoles();
+        for (RoleDTO roleDTO : roles)
+            if (roleDTO.getRoleName() == "ROLE_ADMIN") admin = true;
+        return admin;
+    }
 
-  /*  public void addBasket(UserDTO user,BasketDTO basket){
-        if(basket!=null && user!=null){
-            List<BasketDTO> baskets=user.getBaskets();
-            baskets.add(basket);
-            user.setBaskets(baskets);
-            userRepository.save(UserMap.toEntity(user));
-        }
-    }*/
+
 }

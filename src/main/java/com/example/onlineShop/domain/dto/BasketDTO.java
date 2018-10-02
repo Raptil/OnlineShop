@@ -1,8 +1,6 @@
 package com.example.onlineShop.domain.dto;
 
 
-
-
 import lombok.Data;
 
 import java.util.List;

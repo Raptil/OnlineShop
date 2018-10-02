@@ -24,23 +24,21 @@ public class BasketServiceTest {
     ProductService productService;
 
 
-
-
     @Ignore
     @Test
-    public void createBasket(){
+    public void createBasket() {
 
 
-        UserDTO user=userService.getUser(5);
+        UserDTO user = userService.getUser(5);
 
-        BasketDTO basketDTO=new BasketDTO();
-        basketService.addBasket(basketDTO,user);
+        BasketDTO basketDTO = new BasketDTO();
+        basketService.addBasket(basketDTO, user);
 
     }
 
     @Test
-    public void addProduct(){
+    public void addProduct() {
 
-        basketService.addProductToBasket(productService.getProduct("pen"),4);
+        basketService.addProductToBasket(productService.getProduct("pen"), 4);
     }
 }

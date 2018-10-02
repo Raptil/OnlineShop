@@ -2,7 +2,6 @@ package com.example.onlineShop.domain.entity;
 
 import lombok.Data;
 
-
 import javax.persistence.*;
 
 
@@ -11,10 +10,11 @@ import javax.persistence.*;
 @Entity
 public class Role {
 
-    public Role(String roleName){
-        this.roleName=roleName;
+    public Role(String roleName) {
+        this.roleName = roleName;
     }
-    public Role(){
+
+    public Role() {
 
     }
 
@@ -26,10 +26,6 @@ public class Role {
 
     @Column(name = "role_name")
     private String roleName;
-
-   // @ManyToMany(mappedBy = "roles")
-   // public List<User> users;
-
 
 
 }

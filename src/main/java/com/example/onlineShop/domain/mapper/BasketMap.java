@@ -10,10 +10,10 @@ import java.util.List;
 
 public class BasketMap {
 
-    public static Basket toEntity(BasketDTO basketDTO){
-        if(basketDTO==null) return null;
+    public static Basket toEntity(BasketDTO basketDTO) {
+        if (basketDTO == null) return null;
 
-        Basket basket =new Basket();
+        Basket basket = new Basket();
         basket.setBasketId(basketDTO.getBasketId());
         basket.setTotalCost(basketDTO.getTotalCost());
         basket.setUser(UserMap.toEntity(basketDTO.getUser()));
@@ -22,11 +22,11 @@ public class BasketMap {
         return basket;
     }
 
-    public static BasketDTO toDTO(Basket basket){
+    public static BasketDTO toDTO(Basket basket) {
 
-        if(basket==null) return null;
+        if (basket == null) return null;
 
-        BasketDTO basketDTO=new BasketDTO();
+        BasketDTO basketDTO = new BasketDTO();
         basketDTO.setBasketId(basket.getBasketId());
         basketDTO.setTotalCost(basket.getTotalCost());
         basketDTO.setUser(UserMap.toDTO(basket.getUser()));
@@ -35,23 +35,23 @@ public class BasketMap {
         return basketDTO;
     }
 
-    public  static List<Basket> toEntity(List<BasketDTO> basketDTOS){
+    public static List<Basket> toEntity(List<BasketDTO> basketDTOS) {
 
-        if (basketDTOS==null)return null;
+        if (basketDTOS == null) return null;
 
-        List<Basket> baskets=new ArrayList<>();
-        for(BasketDTO basketDTO:basketDTOS)
-            if(basketDTO!=null)baskets.add(BasketMap.toEntity(basketDTO));
+        List<Basket> baskets = new ArrayList<>();
+        for (BasketDTO basketDTO : basketDTOS)
+            if (basketDTO != null) baskets.add(BasketMap.toEntity(basketDTO));
 
         return baskets;
     }
 
-    public static List<BasketDTO> toDTO (List<Basket> baskets){
-        if(baskets==null) return null;
+    public static List<BasketDTO> toDTO(List<Basket> baskets) {
+        if (baskets == null) return null;
 
-        List<BasketDTO> basketDTOS=new ArrayList<>();
-        for(Basket basket:baskets)
-            if(basket!=null) basketDTOS.add(BasketMap.toDTO(basket));
+        List<BasketDTO> basketDTOS = new ArrayList<>();
+        for (Basket basket : baskets)
+            if (basket != null) basketDTOS.add(BasketMap.toDTO(basket));
 
         return basketDTOS;
     }

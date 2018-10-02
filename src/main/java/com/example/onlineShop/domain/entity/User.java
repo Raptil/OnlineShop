@@ -34,20 +34,20 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_account_to_role",
-            joinColumns=@JoinColumn(name = "user_id"),
-            inverseJoinColumns=@JoinColumn(name = "role_id")
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles;
 
-    public String getUsername(){
-        return  email;
+    public String getUsername() {
+        return email;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> grantedAuthorities=new HashSet<>();
-        for (Role role:getRoles())
-            if(role!=null) grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+role.getRoleName()));
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        for (Role role : getRoles())
+            if (role != null) grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
         return grantedAuthorities;
     }
 
@@ -70,8 +70,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    //  @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-   // private List<Basket>baskets;
 
 
 }

@@ -2,7 +2,6 @@ package com.example.onlineShop.domain.entity;
 
 import lombok.Data;
 
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,22 +19,18 @@ public class Basket {
     @Column(name = "total_cost")
     private int totalCost;
 
-   @ManyToMany(fetch = FetchType.LAZY)
-   @JoinTable(
-           name = "product_to_basket",
-           joinColumns = @JoinColumn(name="basket_id"),
-           inverseJoinColumns = @JoinColumn(name = "product_id")
-   )
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "product_to_basket",
+            joinColumns = @JoinColumn(name = "basket_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
     private List<Product> products;
 
     @ManyToOne(targetEntity = User.class)
-   @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id")
 
     private User user;
-
-
-
-
 
 
 }

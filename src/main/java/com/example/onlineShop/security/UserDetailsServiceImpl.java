@@ -14,11 +14,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
-        User user =userRepository.findUserByEmail(email);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findUserByEmail(email);
 
-        if(user==null) throw new UsernameNotFoundException(email);
-
+        if (user == null) throw new UsernameNotFoundException(email);
 
 
         return user;

@@ -2,7 +2,6 @@ package com.example.onlineShop.domain.entity;
 
 import lombok.Data;
 
-
 import javax.persistence.*;
 
 @Data
@@ -18,15 +17,11 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name="cost")
+    @Column(name = "cost")
     private int cost;
 
     @Column(name = "category")
     private String category;
-
-    //@ManyToMany(mappedBy = "product")
-    //private Basket basket;
-
 
 
 }

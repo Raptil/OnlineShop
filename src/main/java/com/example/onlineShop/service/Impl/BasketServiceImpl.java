@@ -22,41 +22,41 @@ public class BasketServiceImpl implements BasketService {
     private BasketRepository basketRepository;
 
     @Transactional
-    public BasketDTO getBasket(Integer id){
+    public BasketDTO getBasket(Integer id) {
         return BasketMap.toDTO(basketRepository.findBasketByBasketId(id));
     }
 
-    public BasketDTO getBasket(UserDTO user){
-        if(user == null) return null;
+    public BasketDTO getBasket(UserDTO user) {
+        if (user == null) return null;
         return BasketMap.toDTO(basketRepository.findBasketByUser(UserMap.toEntity(user)));
     }
 
-    public BasketDTO addBasket(BasketDTO basketDTO,UserDTO user){
-        if(user==null) return null;
+    public BasketDTO addBasket(BasketDTO basketDTO, UserDTO user) {
+        if (user == null) return null;
         basketDTO.setUser(user);
         return BasketMap.toDTO(basketRepository.save(BasketMap.toEntity(basketDTO)));
     }
 
-    public void addProductToBasket(ProductDTO product,Integer basketId){
-        BasketDTO basketDTO=getBasket(basketId);
+    public void addProductToBasket(ProductDTO product, Integer basketId) {
+        BasketDTO basketDTO = getBasket(basketId);
         List<ProductDTO> products = basketDTO.getProducts();
         products.add(product);
-        basketDTO.setTotalCost(basketDTO.getTotalCost()+product.getCost());
+        basketDTO.setTotalCost(basketDTO.getTotalCost() + product.getCost());
         basketDTO.setProducts(products);
         basketRepository.save(BasketMap.toEntity(basketDTO));
     }
 
-    public BasketDTO addProductToBasket(ProductDTO productDTO,BasketDTO basketDTO){
+    public BasketDTO addProductToBasket(ProductDTO productDTO, BasketDTO basketDTO) {
         List<ProductDTO> products;
-        if(basketDTO.getProducts()==null)products=new ArrayList<>();
-        else products=basketDTO.getProducts();
+        if (basketDTO.getProducts() == null) products = new ArrayList<>();
+        else products = basketDTO.getProducts();
         products.add(productDTO);
-        basketDTO.setTotalCost(basketDTO.getTotalCost()+productDTO.getCost());
+        basketDTO.setTotalCost(basketDTO.getTotalCost() + productDTO.getCost());
         basketDTO.setProducts(products);
         return basketDTO;
     }
 
-    public List<ProductDTO> getProductsFromBasket(Integer basketId){
+    public List<ProductDTO> getProductsFromBasket(Integer basketId) {
 
         return getBasket(basketId).getProducts();
     }
