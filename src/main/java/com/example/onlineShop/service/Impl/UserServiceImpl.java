@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
         boolean admin = false;
         Set<RoleDTO> roles = userDTO.getRoles();
         for (RoleDTO roleDTO : roles)
-            if (roleDTO.getRoleName() == "ROLE_ADMIN") admin = true;
+            if (roleDTO.getRoleName().equals("ROLE_ADMIN")) admin = true;
         return admin;
     }
 

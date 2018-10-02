@@ -2,6 +2,7 @@ package com.example.onlineShop.service;
 
 
 import com.example.onlineShop.domain.dto.BasketDTO;
+import com.example.onlineShop.domain.dto.ProductDTO;
 import com.example.onlineShop.domain.dto.UserDTO;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -36,9 +37,12 @@ public class BasketServiceTest {
 
     }
 
+    
     @Test
     public void addProduct() {
 
         basketService.addProductToBasket(productService.getProduct("pen"), 4);
     }
+
+
 }

@@ -55,5 +55,19 @@ public class ProductViewController {
         return modelAndView;
     }
 
+    @GetMapping(value = "/product/add")
+    public ModelAndView addProduct(){
+        ModelAndView modelAndView = new ModelAndView("addProduct");
+        ProductDTO productDTO=new ProductDTO();
+        modelAndView.addObject("product",productDTO);
+        return modelAndView;
+    }
+    @PostMapping(value = "/product/add")
+    public ModelAndView addProduct(@ModelAttribute("product")ProductDTO productDTO){
+        ModelAndView modelAndView = new ModelAndView("redirect:/mainShop");
+        productService.addProduct(productDTO);
+        return modelAndView;
+    }
+
 
 }

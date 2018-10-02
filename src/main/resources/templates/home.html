@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Spring Security Example</title>
 </head>
@@ -10,16 +11,18 @@
 <p>Click <a th:href="@{/registration}">here for registration</a></p>
 
 
-<table  >
+<table>
     <tr>
         <th>NameOfProduct</th>
         <th>Cost</th>
     </tr>
     <tr th:each="product : ${products}">
-        <td th:text="${product.name}">1 </td>
-        <td th:text="${product.cost}">1 </td>
+        <td th:text="${product.name}">1</td>
+        <td th:text="${product.cost}">1</td>
     </tr>
 </table>
+
+<a th:href="@{/mainShop}">Let`s go shopping</a>
 
 </body>
 </html>

@@ -14,10 +14,12 @@ public interface ProductService {
 
     public ProductDTO getProduct(Integer id);
 
+    @Secured(value = {"ROLE_ADMIN"})
     public ProductDTO addProduct(ProductDTO product);
 
     @Secured(value = {"ROLE_ADMIN"})
     public ProductDTO changeProduct(ProductDTO productDTO);
+
 
     public List<ProductDTO> getAll();
 }

@@ -6,16 +6,16 @@
 </head>
 <body>
 <form th:unless="${#lists.isEmpty(productsFromBasket)}" th:action="@{/onlineBasket/buy}" th:method="POST">
-<table  >
-    <tr>
-        <th>NameOfProduct</th>
-        <th>Cost</th>
-    </tr>
-    <tr th:each="product : ${productsFromBasket}">
-        <td th:text="${product.name}">1 </td>
-        <td th:text="${product.cost}">1 </td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>NameOfProduct</th>
+            <th>Cost</th>
+        </tr>
+        <tr th:each="product : ${productsFromBasket}">
+            <td th:text="${product.name}">1</td>
+            <td th:text="${product.cost}">1</td>
+        </tr>
+    </table>
     <input type="submit" value="Buy">
 </form>
 <h3 th:if="${#lists.isEmpty(productsFromBasket)}"> Basket is empty</h3>

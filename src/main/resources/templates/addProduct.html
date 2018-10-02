@@ -6,16 +6,16 @@
 </head>
 <body>
 
-<form th:action="@{/product/{id}/edit(id=${product.productId})}"
+<form th:action="@{/product/add}"
       th:object="${product}" method="POST">
     Name:
-    <input type="text" th:field="*{name}" th:value="*{name}"/>
+    <input type="text" th:field="*{name}" />
     <br/>
     Cost:
-    <input type="text" th:field="*{cost}" th:value="*{cost}"/>
+    <input type="text" th:field="*{cost}" />
     <br/>
     Category:
-    <input type="text" th:field="*{category}" th:value="*{category}"/>
+    <input type="text" th:field="*{category}"/>
     <br/>
     <input type="submit" value="Save"/>
 </form>

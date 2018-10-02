@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.6
 -- Dumped by pg_dump version 9.5.6
 
--- Started on 2018-09-21 13:31:08
+-- Started on 2018-10-02 21:19:59
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,7 +24,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2173 (class 0 OID 0)
+-- TOC entry 2167 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -35,7 +35,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 193 (class 1259 OID 75476)
+-- TOC entry 189 (class 1259 OID 75476)
 -- Name: basket_basket_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -54,7 +54,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 186 (class 1259 OID 50713)
+-- TOC entry 183 (class 1259 OID 50713)
 -- Name: basket; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -68,11 +68,11 @@ CREATE TABLE basket (
 ALTER TABLE basket OWNER TO postgres;
 
 --
--- TOC entry 185 (class 1259 OID 50711)
--- Name: basket_id_basket_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- TOC entry 192 (class 1259 OID 75510)
+-- Name: product_product_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE basket_id_basket_seq
+CREATE SEQUENCE product_product_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -80,30 +80,15 @@ CREATE SEQUENCE basket_id_basket_seq
     CACHE 1;
 
 
-ALTER TABLE basket_id_basket_seq OWNER TO postgres;
+ALTER TABLE product_product_id_seq OWNER TO postgres;
 
 --
--- TOC entry 183 (class 1259 OID 50703)
--- Name: product_id_product_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE product_id_product_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    MAXVALUE 1000000000
-    CACHE 1;
-
-
-ALTER TABLE product_id_product_seq OWNER TO postgres;
-
---
--- TOC entry 184 (class 1259 OID 50705)
+-- TOC entry 182 (class 1259 OID 50705)
 -- Name: product; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE product (
-    product_id integer DEFAULT nextval('product_id_product_seq'::regclass) NOT NULL,
+    product_id integer DEFAULT nextval('product_product_id_seq'::regclass) NOT NULL,
     name character varying(50) NOT NULL,
     cost integer NOT NULL,
     category character varying(50) NOT NULL
@@ -113,7 +98,7 @@ CREATE TABLE product (
 ALTER TABLE product OWNER TO postgres;
 
 --
--- TOC entry 191 (class 1259 OID 75342)
+-- TOC entry 187 (class 1259 OID 75342)
 -- Name: product_to_basket_id_product_to_basket_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -128,7 +113,7 @@ CREATE SEQUENCE product_to_basket_id_product_to_basket_seq
 ALTER TABLE product_to_basket_id_product_to_basket_seq OWNER TO postgres;
 
 --
--- TOC entry 192 (class 1259 OID 75347)
+-- TOC entry 188 (class 1259 OID 75347)
 -- Name: product_to_basket; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -142,11 +127,11 @@ CREATE TABLE product_to_basket (
 ALTER TABLE product_to_basket OWNER TO postgres;
 
 --
--- TOC entry 187 (class 1259 OID 50756)
--- Name: role_id_role_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- TOC entry 191 (class 1259 OID 75491)
+-- Name: role_role_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE role_id_role_seq
+CREATE SEQUENCE role_role_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -154,15 +139,15 @@ CREATE SEQUENCE role_id_role_seq
     CACHE 1;
 
 
-ALTER TABLE role_id_role_seq OWNER TO postgres;
+ALTER TABLE role_role_id_seq OWNER TO postgres;
 
 --
--- TOC entry 188 (class 1259 OID 50758)
+-- TOC entry 184 (class 1259 OID 50758)
 -- Name: role; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE role (
-    role_id integer DEFAULT nextval('role_id_role_seq'::regclass) NOT NULL,
+    role_id integer DEFAULT nextval('role_role_id_seq'::regclass) NOT NULL,
     role_name character varying(50) NOT NULL
 );
 
@@ -170,7 +155,7 @@ CREATE TABLE role (
 ALTER TABLE role OWNER TO postgres;
 
 --
--- TOC entry 194 (class 1259 OID 75479)
+-- TOC entry 190 (class 1259 OID 75479)
 -- Name: user_account_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -185,14 +170,14 @@ CREATE SEQUENCE user_account_user_id_seq
 ALTER TABLE user_account_user_id_seq OWNER TO postgres;
 
 --
--- TOC entry 182 (class 1259 OID 50695)
+-- TOC entry 181 (class 1259 OID 50695)
 -- Name: user_account; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE user_account (
     user_id integer DEFAULT nextval('user_account_user_id_seq'::regclass) NOT NULL,
     name character varying(50) NOT NULL,
-    password character varying(50) NOT NULL,
+    password character varying(70) NOT NULL,
     email character varying(50) NOT NULL
 );
 
@@ -200,22 +185,7 @@ CREATE TABLE user_account (
 ALTER TABLE user_account OWNER TO postgres;
 
 --
--- TOC entry 181 (class 1259 OID 50693)
--- Name: user_account_id_user_account_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE user_account_id_user_account_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    MAXVALUE 10000000
-    CACHE 1;
-
-
-ALTER TABLE user_account_id_user_account_seq OWNER TO postgres;
-
---
--- TOC entry 190 (class 1259 OID 50766)
+-- TOC entry 186 (class 1259 OID 50766)
 -- Name: user_account_to_role; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -229,7 +199,7 @@ CREATE TABLE user_account_to_role (
 ALTER TABLE user_account_to_role OWNER TO postgres;
 
 --
--- TOC entry 189 (class 1259 OID 50764)
+-- TOC entry 185 (class 1259 OID 50764)
 -- Name: user_account_to_role_id_user_account_to_role_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -244,8 +214,8 @@ CREATE SEQUENCE user_account_to_role_id_user_account_to_role_seq
 ALTER TABLE user_account_to_role_id_user_account_to_role_seq OWNER TO postgres;
 
 --
--- TOC entry 2174 (class 0 OID 0)
--- Dependencies: 189
+-- TOC entry 2168 (class 0 OID 0)
+-- Dependencies: 185
 -- Name: user_account_to_role_id_user_account_to_role_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -253,7 +223,7 @@ ALTER SEQUENCE user_account_to_role_id_user_account_to_role_seq OWNED BY user_ac
 
 
 --
--- TOC entry 2019 (class 2604 OID 50769)
+-- TOC entry 2015 (class 2604 OID 50769)
 -- Name: id_user_to_roles; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -261,162 +231,131 @@ ALTER TABLE ONLY user_account_to_role ALTER COLUMN id_user_to_roles SET DEFAULT 
 
 
 --
--- TOC entry 2157 (class 0 OID 50713)
--- Dependencies: 186
+-- TOC entry 2150 (class 0 OID 50713)
+-- Dependencies: 183
 -- Data for Name: basket; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY basket (basket_id, total_cost, user_id) FROM stdin;
-2	10010	4
-3	0	4
-1	30	4
 \.
 
 
 --
--- TOC entry 2175 (class 0 OID 0)
--- Dependencies: 193
+-- TOC entry 2169 (class 0 OID 0)
+-- Dependencies: 189
 -- Name: basket_basket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('basket_basket_id_seq', 3, true);
+SELECT pg_catalog.setval('basket_basket_id_seq', 6, true);
 
 
 --
--- TOC entry 2176 (class 0 OID 0)
--- Dependencies: 185
--- Name: basket_id_basket_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('basket_id_basket_seq', 6, true);
-
-
---
--- TOC entry 2155 (class 0 OID 50705)
--- Dependencies: 184
+-- TOC entry 2149 (class 0 OID 50705)
+-- Dependencies: 182
 -- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY product (product_id, name, cost, category) FROM stdin;
-2	phone	10000	technique
-3	pen	10	other things
+4	phone	11001	technique
+5	name	12	nameCategory
+7	pen	12	nameCategory
+8	pen	12	abcd
 \.
 
 
 --
--- TOC entry 2177 (class 0 OID 0)
--- Dependencies: 183
--- Name: product_id_product_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('product_id_product_seq', 3, true);
-
-
---
--- TOC entry 2163 (class 0 OID 75347)
+-- TOC entry 2170 (class 0 OID 0)
 -- Dependencies: 192
+-- Name: product_product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('product_product_id_seq', 8, true);
+
+
+--
+-- TOC entry 2155 (class 0 OID 75347)
+-- Dependencies: 188
 -- Data for Name: product_to_basket; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY product_to_basket (id_product_to_basket, basket_id, product_id) FROM stdin;
-6	2	2
-7	2	3
-11	1	3
-12	1	3
-13	1	3
 \.
 
 
 --
--- TOC entry 2178 (class 0 OID 0)
--- Dependencies: 191
+-- TOC entry 2171 (class 0 OID 0)
+-- Dependencies: 187
 -- Name: product_to_basket_id_product_to_basket_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('product_to_basket_id_product_to_basket_seq', 13, true);
+SELECT pg_catalog.setval('product_to_basket_id_product_to_basket_seq', 23, true);
 
 
 --
--- TOC entry 2159 (class 0 OID 50758)
--- Dependencies: 188
+-- TOC entry 2151 (class 0 OID 50758)
+-- Dependencies: 184
 -- Data for Name: role; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY role (role_id, role_name) FROM stdin;
-1	USER
+7	ROLE_ADMIN
+8	ROLE_USER
 \.
 
 
 --
--- TOC entry 2179 (class 0 OID 0)
--- Dependencies: 187
--- Name: role_id_role_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 2172 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: role_role_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('role_id_role_seq', 1, true);
+SELECT pg_catalog.setval('role_role_id_seq', 8, true);
 
 
 --
--- TOC entry 2153 (class 0 OID 50695)
--- Dependencies: 182
+-- TOC entry 2148 (class 0 OID 50695)
+-- Dependencies: 181
 -- Data for Name: user_account; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY user_account (user_id, name, password, email) FROM stdin;
-4	userName	userPassword	userEmail
-6	userName	userPassword	userEmail343
-7	userName10	userPassword10	userEmail10
-8	userName16	userPassword16	userEmail16
-1	NewName	His password	EmailOfNewUser
-3	NewName	His password	EmailOfNewUser1
+8	Aleksey	$2a$10$tcqRZnJLTzzyWD9lwwH6nO1XdcZeZRFVBouZu.7SUTJCVVLOx9m4u	Hurricane095@gmail.com
+10	I`mNew	$2a$10$gnw41FeOffpPxKWG1fbD1us6RkF0KSWwEm4uUBi7DpOpDbAcn1VUW	New
 \.
 
 
 --
--- TOC entry 2180 (class 0 OID 0)
--- Dependencies: 181
--- Name: user_account_id_user_account_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('user_account_id_user_account_seq', 11, true);
-
-
---
--- TOC entry 2161 (class 0 OID 50766)
--- Dependencies: 190
+-- TOC entry 2153 (class 0 OID 50766)
+-- Dependencies: 186
 -- Data for Name: user_account_to_role; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY user_account_to_role (id_user_to_roles, user_id, role_id) FROM stdin;
-1	4	1
-2	6	1
-3	7	1
-4	8	1
-5	1	1
-6	3	1
+7	8	7
+8	10	8
 \.
 
 
 --
--- TOC entry 2181 (class 0 OID 0)
--- Dependencies: 189
+-- TOC entry 2173 (class 0 OID 0)
+-- Dependencies: 185
 -- Name: user_account_to_role_id_user_account_to_role_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('user_account_to_role_id_user_account_to_role_seq', 6, true);
+SELECT pg_catalog.setval('user_account_to_role_id_user_account_to_role_seq', 8, true);
 
 
 --
--- TOC entry 2182 (class 0 OID 0)
--- Dependencies: 194
+-- TOC entry 2174 (class 0 OID 0)
+-- Dependencies: 190
 -- Name: user_account_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('user_account_user_id_seq', 4, true);
+SELECT pg_catalog.setval('user_account_user_id_seq', 10, true);
 
 
 --
--- TOC entry 2026 (class 2606 OID 50718)
+-- TOC entry 2022 (class 2606 OID 50718)
 -- Name: baskets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -425,7 +364,7 @@ ALTER TABLE ONLY basket
 
 
 --
--- TOC entry 2032 (class 2606 OID 75352)
+-- TOC entry 2028 (class 2606 OID 75352)
 -- Name: product_to_basket_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -434,7 +373,7 @@ ALTER TABLE ONLY product_to_basket
 
 
 --
--- TOC entry 2024 (class 2606 OID 50710)
+-- TOC entry 2020 (class 2606 OID 50710)
 -- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -443,7 +382,7 @@ ALTER TABLE ONLY product
 
 
 --
--- TOC entry 2028 (class 2606 OID 50763)
+-- TOC entry 2024 (class 2606 OID 50763)
 -- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -452,7 +391,7 @@ ALTER TABLE ONLY role
 
 
 --
--- TOC entry 2022 (class 2606 OID 50700)
+-- TOC entry 2018 (class 2606 OID 50700)
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -461,7 +400,7 @@ ALTER TABLE ONLY user_account
 
 
 --
--- TOC entry 2030 (class 2606 OID 50771)
+-- TOC entry 2026 (class 2606 OID 50771)
 -- Name: users_to_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -470,7 +409,7 @@ ALTER TABLE ONLY user_account_to_role
 
 
 --
--- TOC entry 2037 (class 2606 OID 75358)
+-- TOC entry 2033 (class 2606 OID 75358)
 -- Name: basket_to_product_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -479,7 +418,7 @@ ALTER TABLE ONLY product_to_basket
 
 
 --
--- TOC entry 2033 (class 2606 OID 75471)
+-- TOC entry 2029 (class 2606 OID 75471)
 -- Name: basket_to_user_account_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -488,7 +427,7 @@ ALTER TABLE ONLY basket
 
 
 --
--- TOC entry 2036 (class 2606 OID 75353)
+-- TOC entry 2032 (class 2606 OID 75353)
 -- Name: product_to_basket_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -497,7 +436,7 @@ ALTER TABLE ONLY product_to_basket
 
 
 --
--- TOC entry 2035 (class 2606 OID 50777)
+-- TOC entry 2031 (class 2606 OID 50777)
 -- Name: roles_to_users_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -506,7 +445,7 @@ ALTER TABLE ONLY user_account_to_role
 
 
 --
--- TOC entry 2034 (class 2606 OID 50772)
+-- TOC entry 2030 (class 2606 OID 50772)
 -- Name: users_to_roles_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -515,7 +454,7 @@ ALTER TABLE ONLY user_account_to_role
 
 
 --
--- TOC entry 2172 (class 0 OID 0)
+-- TOC entry 2166 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -526,7 +465,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2018-09-21 13:31:08
+-- Completed on 2018-10-02 21:20:00
 
 --
 -- PostgreSQL database dump complete
