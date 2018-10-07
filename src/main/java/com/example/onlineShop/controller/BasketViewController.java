@@ -4,6 +4,8 @@ import com.example.onlineShop.domain.dto.BasketDTO;
 import com.example.onlineShop.service.BasketService;
 import com.example.onlineShop.service.ProductService;
 import com.example.onlineShop.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +29,16 @@ public class BasketViewController {
     @Autowired
     ProductService productService;
 
+    private static final Logger logger= LoggerFactory.getLogger(BasketViewController.class.getName());
+
 
     @PostMapping(value = "/addProductToBasket/{id}")
     public ModelAndView addProductToBasket(@PathVariable("id") Integer id, HttpSession httpSession) {
         if (httpSession.getAttribute("basket") == null) {
             BasketDTO basketDTO = new BasketDTO();
             httpSession.setAttribute("basket", basketDTO);
+            logger.info("basket does not exist");
+
         }
         BasketDTO basket = (BasketDTO) httpSession.getAttribute("basket");
         basket = basketService.addProductToBasket(productService.getProduct(id), basket);

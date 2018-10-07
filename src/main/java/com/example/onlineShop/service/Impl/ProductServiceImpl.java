@@ -4,6 +4,9 @@ import com.example.onlineShop.domain.dto.ProductDTO;
 import com.example.onlineShop.domain.mapper.ProductMap;
 import com.example.onlineShop.repository.ProductRepository;
 import com.example.onlineShop.service.ProductService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    private final static Logger logger = LoggerFactory.getLogger(ProductService.class.getName());
 
     public ProductDTO getProduct(String name, Integer cost) {
         return ProductMap.toDTO(productRepository.findProductByNameAndCost(name, cost));
@@ -34,6 +39,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public List<ProductDTO> getAll() {
+        logger.info("get All products");
         return ProductMap.toDTO(productRepository.findAll());
     }
 

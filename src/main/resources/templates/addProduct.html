@@ -10,12 +10,15 @@
       th:object="${product}" method="POST">
     Name:
     <input type="text" th:field="*{name}" />
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
     <br/>
     Cost:
     <input type="text" th:field="*{cost}" />
     <br/>
     Category:
+
     <input type="text" th:field="*{category}"/>
+    <span th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>
     <br/>
     <input type="submit" value="Save"/>
 </form>

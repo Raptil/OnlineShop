@@ -9,12 +9,15 @@
       th:object="${user}" method="POST">
     First Name:
     <input type="text" th:field="*{name}"/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
     <br/>
     Password:
     <input type="text" th:field="*{password}"/>
+    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
     <br/>
     Email:
     <input type="text" th:field="*{email}"/>
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
     <br/>
     <input type="submit" value="Create"/>
 </form>
